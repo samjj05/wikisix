@@ -12,13 +12,20 @@ The direction from the starting page will explore its outgoing links, while the 
 ## How the search works
 The search is done through a bi-directional breadth-first search, which allowed me to treat the collection of Wikipedia articles like an unweighted graph. The primary reason why I chose this compared to an ordinary BFS is that, since Wikipedia is so immensely dense, using the latter choice could result in some searches taking minutes at a time.
 For a normal BFS, the graph grows at b^d (branching factor^solution depth). However, for a bi-directional BFS, the graph grows at b^d/2. For example, if a page links to 100 Wikipedia articles, and the solution is 4 clicks away, 100^4 (100,000,000) pages will be explored in the search. For the bi-directional approach, 100^2 (10,000) pages will be explored. This saves an incredible amount of time.
-In the searching algorithm, the shortest frontier queue is used first. This is also a time-saving feature, since it means the most time-efficient approach will be taken each iteration. Since the target page looks at its backlinks, for a page like 'Poland', its backlinks will be enormous compared to the outgoing links from a page such as 'Pet door'.
+In the searching algorithm, the shortest frontier queue is used first. This is also a time-saving feature, as it ensures the most time-efficient approach is taken each iteration. Since the target page examines its backlinks, a page like 'Poland' will have numerous backlinks compared to the outgoing links from a page such as 'Pet door'.
+
+![Waiting for the search to complete](images/waiting)
+![Search results for 'The Mercury (South Africa)' to '4 Vesta'](images/results)
 
 ## How redirect pages are handled
 Redirect pages are handled instantly at the point of input. Pywikibot has Page methods to allow me to check if it is a redirect page or not. If it is, it is instantly turned into its redirect target. 
 
 ## How ambiguous pages are handled
 Should a user input a page title such as 'Mercury' (which could mean the planet, element, etc.), the system will allow the user to select the specific page they meant. 
+
+![Inputting 'Mercury' as starting page](images/mercury_input)
+![Message output when input lands on an ambiguous page](images/mercury_input_message)
+![Selecting a main article page from an ambiguous page](images/mercury_possibilities)
 
 
 
