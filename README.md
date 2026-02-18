@@ -14,8 +14,8 @@ The search is done through a bi-directional breadth-first search, which allowed 
 For a normal BFS, the graph grows at b^d (branching factor^solution depth). However, for a bi-directional BFS, the graph grows at b^d/2. For example, if a page links to 100 Wikipedia articles, and the solution is 4 clicks away, 100^4 (100,000,000) pages will be explored in the search. For the bi-directional approach, 100^2 (10,000) pages will be explored. This saves an incredible amount of time.
 In the searching algorithm, the shortest frontier queue is used first. This is also a time-saving feature, as it ensures the most time-efficient approach is taken each iteration. Since the target page examines its backlinks, a page like 'Poland' will have numerous backlinks compared to the outgoing links from a page such as 'Pet door'.
 
-![Waiting for the search to complete](images/waiting)
-![Search results for 'The Mercury (South Africa)' to '4 Vesta'](images/results)
+![Waiting for the search to complete](images/waiting.png)
+![Search results for 'The Mercury (South Africa)' to '4 Vesta'](images/results.png)
 
 ## How redirect pages are handled
 Redirect pages are handled instantly at the point of input. Pywikibot has Page methods to allow me to check if it is a redirect page or not. If it is, it is instantly turned into its redirect target. 
@@ -23,9 +23,9 @@ Redirect pages are handled instantly at the point of input. Pywikibot has Page m
 ## How ambiguous pages are handled
 Should a user input a page title such as 'Mercury' (which could mean the planet, element, etc.), the system will allow the user to select the specific page they meant. 
 
-![Inputting 'Mercury' as starting page](images/mercury_input)
-![Message output when input lands on an ambiguous page](images/mercury_input_message)
-![Selecting a main article page from an ambiguous page](images/mercury_possibilities)
+![Inputting 'Mercury' as starting page](images/mercury_input.png)
+![Message output when input lands on an ambiguous page](images/mercury_input_message.png)
+![Selecting a main article page from an ambiguous page](images/mercury_possibilities.png)
 
 
 
